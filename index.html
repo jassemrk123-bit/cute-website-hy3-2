@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-ivory">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A personal, premium web experience created with love." />
+  <meta name="author" content="Created for you" />
+  <title>For You — A Keepsake</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Core styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/theme.css" />
+</head>
+
+<body>
+  <!-- ============================================================
+       SVG Icon Sprite
+       These symbols are reused across the experience.
+  ============================================================ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="icon-dove" viewBox="0 0 64 64">
+        <path
+          fill="currentColor"
+          d="M62 6c-4 2-8 5-11 9-2-4-5-7-9-9 4 4 6 8 6 12-4-2-8-4-12-4 4 4 8 6 13 6-5 4-12 6-18 4 7 5 16 7 24 3 5-2 10-7 14-12 2-3 4-7 5-9z"
+        />
+      </symbol>
+
+      <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+      </symbol>
+
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 12h14M13 6l6 6-6 6"
+        />
+      </symbol>
+
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          d="M6 6l12 12M18 6L6 18"
+        />
+      </symbol>
+
+      <symbol id="icon-seal" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M12 2l2.4 4.8L20 8l-4 4 1 6-5-3-5 3 1-6-4-4 5.6-1.2z"
+        />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ============================================================
+       Boot Overlay: Envelope Experience
+  ============================================================ -->
+  <div id="boot-overlay" class="boot-overlay" role="dialog" aria-label="Open your letter">
+    <div class="boot-inner">
+      <div id="envelope" class="envelope" tabindex="0" role="button" aria-label="Open envelope">
+        <div class="envelope__back"></div>
+
+        <div class="envelope__letter">
+          <div class="letter-paper">
+            <p class="letter-paper__text">
+              sorry baba im not being able to give u attention nowadays im just tryna focus on these kind of stuff like websites hopefully u like this one i made for you of course there will be more to come when i learn all of this properly, i love you baba
+            </p>
+            <div class="letter-paper__seal" aria-hidden="true">
+              <svg class="icon"><use href="#icon-seal"></use></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="envelope__front"></div>
+        <div class="envelope__flap"></div>
+
+        <button type="button" class="envelope__open" aria-label="Open envelope">
+          <span class="envelope__open-label">Open</span>
+        </button>
+      </div>
+
+      <p class="boot-hint">Click the envelope to open your letter</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       Doves Layer
+       White doves are injected here when the letter opens.
+  ============================================================ -->
+  <div id="doves-layer" class="doves-layer" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       Main Application
+  ============================================================ -->
+  <div id="app" class="app is-hidden">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">
+            <svg class="icon"><use href="#icon-heart"></use></svg>
+          </span>
+          <span class="brand__name">For You</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a class="site-nav__link" href="gallery.html">Memories</a>
+          <a class="site-nav__link" href="#keepsake">Letter</a>
+          <button type="button" id="theme-toggle" class="site-nav__button">
+            Change Mood
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__inner">
+          <p class="hero__eyebrow">A quiet little website</p>
+          <h1 id="hero-title" class="hero__title">Made for you, with patience</h1>
+          <p class="hero__lede">
+            This is not a perfect website yet. It is a starting point — a small,
+            handwritten corner of the internet where I can practice, create, and
+            eventually build more things just for you.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="gallery.html">
+              View our memories
+              <svg class="icon"><use href="#icon-arrow"></use></svg>
+            </a>
+            <a class="btn btn--ghost" href="#keepsake">Re-read the letter</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Keepsake Letter -->
+      <section id="keepsake" class="keepsake" aria-labelledby="keepsake-title">
+        <div class="keepsake__inner">
+          <p class="keepsake__eyebrow">The letter</p>
+          <h2 id="keepsake-title" class="keepsake__title">From me, to you</h2>
+
+          <article class="keepsake__paper">
+            <p class="keepsake__text">
+              sorry baba im not being able to give u attention nowadays im just tryna focus on these kind of stuff like websites hopefully u like this one i made for you of course there will be more to come when i learn all of this properly, i love you baba
+            </p>
+            <footer class="keepsake__sign">— with love</footer>
+          </article>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="features" aria-labelledby="features-title">
+        <div class="features__inner">
+          <h2 id="features-title" class="features__title">What this little site has</h2>
+          <div class="features__grid">
+            <article class="feature-card">
+              <h3 class="feature-card__title">A proper hello</h3>
+              <p class="feature-card__text">
+                Instead of dropping you straight into a page, the site greets you
+                with an envelope and a small flight of doves.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <h3 class="feature-card__title">Room for photos</h3>
+              <p class="feature-card__text">
+                The memories page is built to grow. You can add pictures without
+                touching the complicated parts of the code.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <h3 class="feature-card__title">Small surprises</h3>
+              <p class="feature-card__text">
+                There are a few hidden interactions. Some are obvious, some are
+                quieter. Not everything here is meant to be found immediately.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__text">
+          Crafted slowly, with care.
+          <button type="button" id="heart-cursor" class="footer-heart" title="A tiny extra">
+            <svg class="icon"><use href="#icon-heart"></use></svg>
+          </button>
+        </p>
+        <p class="site-footer__hint">Psst — try typing the word “love”.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============================================================
+       Secret Panel
+  ============================================================ -->
+  <div id="secret-panel" class="modal" hidden>
+    <div class="modal__backdrop" data-close="secret-panel"></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="secret-title">
+      <button type="button" class="modal__close" data-close="secret-panel" aria-label="Close">
+        <svg class="icon"><use href="#icon-close"></use></svg>
+      </button>
+      <h2 id="secret-title" class="modal__title">You found a quiet corner</h2>
+      <p class="modal__text">
+        Some things are not on the menu. This one is just a thank-you for being
+        curious. More little corners will appear as the site grows.
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       Scripts
+  ============================================================ -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/experience.js"></script>
+  <script src="assets/js/easterEggs.js"></script>
+</body>
+</html>
